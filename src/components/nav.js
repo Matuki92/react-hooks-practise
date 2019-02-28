@@ -59,23 +59,28 @@ const Nav = () => {
         </li>
 
         <hr/>
-        {/* lang toggle button */}
-        <li>
-          <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
-            {lang.id === 'EN' ? 'Español' : 'English'}
-          </button>
-        </li>
 
-        <hr/>
-
-        {/* about button */}
-        <li>
-          <NavLink exact to="/about">
-            <button className="nav-button" type="button">
-              {lang.about_button}
+        <div className="secondary-buttons">
+        
+          {/* lang toggle button */}
+          <li>
+            <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
+              {lang.id === 'EN' ? 'Español' : 'English'}
             </button>
-          </NavLink>
-        </li>
+          </li>
+
+          <hr/>
+
+          {/* about button */}
+          <li>
+            <NavLink exact to="/about">
+              <button className="nav-button" type="button">
+                {lang.about_button}
+              </button>
+            </NavLink>
+          </li>
+
+        </div>
 
       </ul>
     </nav>

@@ -96,7 +96,12 @@ body {
 
   .list {
     display: flex !important;
+    justify-content: space-between;
     box-shadow: none;
+  }
+
+  .secondary-buttons li {
+    display: inline-block;
   }
 
   .list hr {
