@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { Lang } from '../lang/index';
 
 const Nav = () => {
-console.log('rendering nav');
+  console.log('rendering nav');
 
   const [ showMenu, setShowMenu ] = useState(false);
   const { lang, dispatch } = useContext(Lang);
@@ -82,4 +82,4 @@ console.log('rendering nav');
   );
 }
 
-export default Nav;
+export default React.memo(Nav);
