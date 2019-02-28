@@ -42,6 +42,16 @@ body {
   hr {
     margin: 0;
   }
+/* container */
+
+  .container {
+    margin: 0 auto;
+    width: 90%;
+  }
+  
+  .container > .about {   
+    text-align: center;
+  }
 
 /* === nav === */
 
@@ -63,6 +73,7 @@ body {
 /* small screen */
 @media screen and (max-width: 768px) {
   .list {
+    background: white;
     position: absolute;
     transform: translateY(15px);
     text-align: center;
@@ -90,5 +101,11 @@ body {
 
   .list hr {
     display: none;
+  }
+
+  /* container */
+
+  .container {
+    width: 768px;
   }
 }

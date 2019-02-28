@@ -4,6 +4,7 @@ import React, { useReducer } from 'react';
 import { Route } from 'react-router-dom';
 // components
 import Nav from './components/nav';
+import About from './components/about';
 // lang
 import { Lang, langReducer, initialLangState } from './lang/index';
 
@@ -18,7 +19,7 @@ const App = () => {
       <section className="container">
       {/* route outlet */}
         <Route exact path="/"/>
-        <Route path="/about"/>
+        <Route path="/about" component={About}/>
       </section>
 
     </Lang.Provider>

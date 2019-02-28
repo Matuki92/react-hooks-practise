@@ -72,7 +72,7 @@ console.log('rendering nav');
         <li>
           <Link to="/about">
             <button className="nav-button" type="button">
-              {lang.about}
+              {lang.about_button}
             </button>
           </Link>
         </li>
