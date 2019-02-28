@@ -14,11 +14,15 @@ console.log('rendering nav');
   //
   // toggle menu functions
   //
-  const hideMenu = () => {
-    // hide menu
-    setShowMenu(false);
-    // clean listener
-    document.removeEventListener('click', hideMenu);
+  const hideMenu = ({ target }) => {
+    const langButton = document.querySelector('#lang-button');
+    // dont hide menu if language is toggled
+    if (target !== langButton) {
+      // hide menu
+      setShowMenu(false);
+      // clean listener
+      document.removeEventListener('click', hideMenu);
+    };
   }
   const handleShowMenu = () => {
     if (!showMenu) {
@@ -57,7 +61,7 @@ console.log('rendering nav');
         <hr/>
         {/* lang toggle button */}
         <li>
-          <button className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
+          <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
             {lang.id === 'EN' ? 'Español' : 'English'}
           </button>
         </li>
