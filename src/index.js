@@ -41,6 +41,6 @@ const [ { lang }, dispatch ] = useReducer(langReducer, initialLangState);
 // render app
 ReactDOM.render(
       <App/>,
-  // render in root
+  // render in root div
   document.getElementById('root')
 );

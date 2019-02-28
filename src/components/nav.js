@@ -1,7 +1,7 @@
 // react
 import React, { useState, useContext } from 'react';
 // router
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 // lang
 import { Lang } from '../lang/index';
 
@@ -51,11 +51,11 @@ const Nav = () => {
       >
         {/* home button */}
         <li>
-          <Link to="/">
+          <NavLink to="/">
             <button className="nav-button" type="button">
               {lang.home_button}
             </button>
-          </Link>
+          </NavLink>
         </li>
 
         <hr/>
@@ -70,11 +70,11 @@ const Nav = () => {
 
         {/* about button */}
         <li>
-          <Link to="/about">
+          <NavLink exact to="/about">
             <button className="nav-button" type="button">
               {lang.about_button}
             </button>
-          </Link>
+          </NavLink>
         </li>
 
       </ul>
