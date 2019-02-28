@@ -46,7 +46,6 @@ body {
 
   .container {
     margin: 0 auto;
-    width: 90%;
   }
   
   .container > .about {   
@@ -84,6 +83,10 @@ body {
     font-size: 30px;
     padding: 0 5px;
     border-radius: 5px;
+  }
+
+  #root > .container {
+    width: 90%;
   }
 }
 

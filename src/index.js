@@ -24,8 +24,8 @@ const [ { lang }, dispatch ] = useReducer(langReducer, initialLangState);
 
           {/* app layout start */}
           <Nav/>
-
           <section className="container">
+
           {/* route outlet */}
             <Route exact path="/"/>
             <Route path="/about" render={() => <About/>}/>

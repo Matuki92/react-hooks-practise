@@ -36,53 +36,57 @@ const Nav = () => {
   // render
   return (
     <nav className="menu">
-    {/* responsive nav menu */}
+    <div className="container">
 
-      <button 
-        className="toggle-menu"
-        onClick={handleShowMenu}
-      >
-        &#9776;
-      </button>
+      {/* responsive nav menu */}
 
-      <ul 
-        className="list"
-        style={{ display: showMenu ? 'block' : 'none' }}
-      >
-        {/* home button */}
-        <li>
-          <NavLink to="/">
-            <button className="nav-button" type="button">
-              {lang.home_button}
-            </button>
-          </NavLink>
-        </li>
+        <button 
+          className="toggle-menu"
+          onClick={handleShowMenu}
+        >
+          &#9776;
+        </button>
 
-        <hr/>
-
-        <div className="secondary-buttons">
-        
-          {/* lang toggle button */}
+        <ul 
+          className="list"
+          style={{ display: showMenu ? 'block' : 'none' }}
+        >
+          {/* home button */}
           <li>
-            <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
-              {lang.id === 'EN' ? 'Español' : 'English'}
-            </button>
-          </li>
-
-          <hr/>
-
-          {/* about button */}
-          <li>
-            <NavLink exact to="/about">
+            <NavLink to="/">
               <button className="nav-button" type="button">
-                {lang.about_button}
+                {lang.home_button}
               </button>
             </NavLink>
           </li>
 
-        </div>
+          <hr/>
 
-      </ul>
+          <div className="secondary-buttons">
+          
+            {/* lang toggle button */}
+            <li>
+              <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'TOGGLE-LANG' })}>
+                {lang.id === 'EN' ? 'Español' : 'English'}
+              </button>
+            </li>
+
+            <hr/>
+
+            {/* about button */}
+            <li>
+              <NavLink exact to="/about">
+                <button className="nav-button" type="button">
+                  {lang.about_button}
+                </button>
+              </NavLink>
+            </li>
+
+          </div>
+
+        </ul>
+    </div>
+    
     </nav>
   );
 }
