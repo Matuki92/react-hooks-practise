@@ -36,6 +36,7 @@ const Nav = () => {
   // render
   return (
     <nav className="menu">
+    {/* container inside navbar to center content */}
     <div className="container">
 
       {/* responsive nav menu */}
@@ -56,6 +57,17 @@ const Nav = () => {
             <NavLink to="/">
               <button className="nav-button" type="button">
                 {lang.home_button}
+              </button>
+            </NavLink>
+          </li>
+
+          <hr/>
+
+          {/* signup button */}
+          <li>
+            <NavLink to="/signup">
+              <button className="nav-button" type="button">
+                {lang.signup_button}
               </button>
             </NavLink>
           </li>
@@ -86,7 +98,7 @@ const Nav = () => {
 
         </ul>
     </div>
-    
+
     </nav>
   );
 }

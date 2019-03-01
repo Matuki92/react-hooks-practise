@@ -6,6 +6,7 @@ import { MemoryRouter, Route } from 'react-router-dom';
 // components
 import Nav from './components/nav';
 import About from './components/about';
+import SignUp from './components/signup';
 // lang
 import { Lang, langReducer, initialLangState } from './lang/index';
 // css
@@ -24,10 +25,10 @@ const [ { lang }, dispatch ] = useReducer(langReducer, initialLangState);
 
           {/* app layout start */}
           <Nav/>
-          <section className="container">
-
           {/* route outlet */}
+          <section className="container">
             <Route exact path="/"/>
+            <Route path="/signup" render={() => <SignUp/>}/>
             <Route path="/about" render={() => <About/>}/>
           </section>
 
