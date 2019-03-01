@@ -112,7 +112,7 @@ body {
     box-shadow: none;
   }
 
-  .secondary-buttons li {
+  .button-group li {
     display: inline-block;
   }
 

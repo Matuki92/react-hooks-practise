@@ -52,29 +52,36 @@ const Nav = () => {
           className="list"
           style={{ display: showMenu ? 'block' : 'none' }}
         >
-          {/* home button */}
-          <li>
-            <NavLink to="/">
-              <button className="nav-button" type="button">
-                {lang.home_button}
-              </button>
-            </NavLink>
-          </li>
+
+          <div className="button-group">
+          
+            {/* home button */}
+            <li>
+              <NavLink to="/">
+                <button className="nav-button" type="button">
+                  {lang.home_button}
+                </button>
+              </NavLink>
+            </li>
+
+            <hr/>
+
+            {/* signup button */}
+            <li>
+              <NavLink to="/signup">
+                <button className="nav-button" type="button">
+                  {lang.signup_button}
+                </button>
+              </NavLink>
+            </li>
+
+          </div>
+
+          
 
           <hr/>
 
-          {/* signup button */}
-          <li>
-            <NavLink to="/signup">
-              <button className="nav-button" type="button">
-                {lang.signup_button}
-              </button>
-            </NavLink>
-          </li>
-
-          <hr/>
-
-          <div className="secondary-buttons">
+          <div className="button-group">
           
             {/* lang toggle button */}
             <li>
