@@ -70,7 +70,7 @@ const Nav = () => {
             <li>
               <NavLink to="/signup">
                 <button className="nav-button" type="button">
-                  {lang.signup_button}
+                  {lang.signup}
                 </button>
               </NavLink>
             </li>

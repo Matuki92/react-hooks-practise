@@ -8,6 +8,7 @@ html, body, #root {
   overflow: hidden; /*  Disable scrollbars */
   display: block;  /* No floating content on sides */
 }
+
 /* list reset */
 
 ul {
@@ -22,11 +23,18 @@ a {
 }
 
 /* menu button reset */
-nav.menu button {
+button {
   background: none;
   border: none;
 }
 
+/* variables */
+
+:root {
+  --gray: rgb(201, 201, 201);
+  --green: rgb(0, 130, 0);
+  --form-elements-width: 200px;
+}
 
 /* === typography === */
 
@@ -35,18 +43,28 @@ body {
 }
 
 /* === layout === */
-
-  button:hover {
-    box-shadow: 0 0 2px 2px rgb(201, 201, 201);
-  }
   
-  button:focus {
+  button:focus,
+  input:focus {
     outline: none;
   }
 
   hr {
     margin: 0;
   }
+
+  input {
+    width: var(--form-elements-width);
+    border: none;
+    border-bottom: 1px solid var(--gray);
+    border-radius: 5px;
+  }
+
+  input:focus {
+    border-bottom: 1px solid var(--green);
+    background: rgb(240, 240, 240);
+  }
+
 /* container */
 
   .container {
@@ -64,7 +82,7 @@ body {
 /* === nav === */
 
 .menu {
-  border-bottom: 1px solid rgb(201, 201, 201);
+  border-bottom: 1px solid var(--gray);
   padding: 5px 10px;
 }
 
@@ -72,6 +90,35 @@ body {
   font-size: inherit;
   padding: 10px 0;
   width: 100px;
+}
+
+/* === form === */
+
+form {
+  font-size: 120%;
+  text-align: center;
+}
+
+form > .field {
+  margin-bottom: 10px;
+}
+
+form > .field > input {
+  font-size: inherit;
+}
+
+form > .field > label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form button {
+  font-size: inherit;
+  background: var(--green);
+  color: white;
+  border-radius: 5px;
+  width: var(--form-elements-width);
+  padding: 5px 0;
 }
 
 /*  */
@@ -85,7 +132,7 @@ body {
     position: absolute;
     transform: translateY(15px);
     text-align: center;
-    box-shadow: 0 0 2px 2px rgb(201, 201, 201);
+    box-shadow: 0 0 2px 2px var(--gray);
   }
   
   .toggle-menu {
@@ -118,6 +165,10 @@ body {
 
   .list hr {
     display: none;
+  }
+
+  button:hover {
+    box-shadow: 0 0 0.5px 0.5px var(--green);
   }
 
   /* container */
