@@ -81,6 +81,8 @@ const Nav = () => {
                   </NavLink>
                 </li>
 
+                <hr/>
+
                 {/* login button */}
                 <li>
                   <NavLink to="/login">
