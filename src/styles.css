@@ -88,8 +88,8 @@ body {
 
 .list .nav-button {
   font-size: inherit;
-  padding: 10px 0;
-  width: 100px;
+  padding: 10px 5px;
+  width: 120px;
 }
 
 /* === form === */

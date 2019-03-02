@@ -5,7 +5,9 @@ export default {
   // nav
   home_button: 'Home',
   about_button: 'About',
-  signup: 'Sign Up',
+  signup: 'Sign up',
+  login: 'Log in',
+  logout: 'Log out',
   // signup
   username: 'Username',
   password: 'Password',
