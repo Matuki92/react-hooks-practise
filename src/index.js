@@ -33,7 +33,7 @@ const [ { lang }, langDispatch ] = useReducer(langReducer, initialLangState),
             {/* route outlet */}
             <section className="container">
               <Route exact path="/"/>
-              {user &&
+              {!user &&
                 // protected routes
                 <Fragment>
                   <Route path="/signup" render={() => <SignUp/>}/>
