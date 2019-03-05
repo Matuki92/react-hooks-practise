@@ -29,7 +29,11 @@ useEffect(() => {
   // check for user session
   // TODO: loading feedback
   me()
-    .then(user => userDispatch({ type: 'SET_USER', payload: user}))
+    .then(user => {
+      if (user) {
+        userDispatch({ type: 'SET_USER', payload: user})
+      }
+  })
 }, []);
 
   return (

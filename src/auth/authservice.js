@@ -8,13 +8,12 @@ export const me = async () => {
       method: 'GET'
     });
 
-    if (response.status !== 200) {
-      return null;
+    if (response.status === 200) {
+      const user = await response.json();
+      return user;
     }
-
-    const user = await response.json();
-
-    return user;
+    
+    return null;
   } catch {
     return null;
   }
