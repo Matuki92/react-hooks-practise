@@ -1,5 +1,5 @@
 // react
-import React, { Fragment, useReducer } from 'react';
+import React, { Fragment, useReducer, useEffect } from 'react'
 import ReactDOM from 'react-dom';
 // router
 import { MemoryRouter, Route } from 'react-router-dom';
@@ -8,6 +8,8 @@ import Nav from './components/nav';
 import About from './components/about';
 import SignUp from './components/signup';
 import LogIn from './components/login';
+// services
+import { me } from './auth/authservice';
 // lang
 import { Lang, langReducer, initialLangState } from './lang/index';
 // user
@@ -20,7 +22,12 @@ const App = () => {
 // language context provider
 const [ { lang }, langDispatch ] = useReducer(langReducer, initialLangState),
   [ { user }, userDispatch ] = useReducer(userReducer, initialUserState);
-  console.log(user ? 'logged in' : 'logged out');
+
+useEffect(() => {
+  me()
+    .then(user => userDispatch({ type: 'SET_USER', payload: user}))
+}, []); 
+
   return (
     // wrap app in provider and router
     <Lang.Provider value={{ lang, langDispatch }}>

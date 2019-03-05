@@ -1,21 +1,18 @@
+// react
 import { createContext } from 'react';
 
 export const initialUserState = {
   // this hard coded data should be fetched from a server
-  user: {
-    username: 'test user'
-  }
+  user: null
 }
 
 export const User = createContext();
 
 export const userReducer = (state, action) => {
-  // hard coded
+
   switch (action.type) {
-    case 'LOG_IN':
-      return state;
-    case 'SIGN_UP':
-      return state;
+    case 'SET_USER':
+      return { state, user: action.payload };
     case 'LOG_OUT':
       return { ...state, user: null };
     default:

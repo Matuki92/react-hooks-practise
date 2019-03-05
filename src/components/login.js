@@ -2,6 +2,10 @@
 import React, { useState, useContext } from 'react';
 // lang
 import { Lang } from '../lang/index';
+// user
+import { User } from '../user/index';
+// auth
+import { login } from '../auth/authservice';
 
 const LogIn = () => {
   console.log('rendering login');
@@ -11,7 +15,8 @@ const LogIn = () => {
     password: ''
   });
 
-  const { lang } = useContext(Lang);
+  const { lang } = useContext(Lang),
+    { userDispatch } = useContext(User);
   
   // main dispatch function for all the inputs
   const dispatchInputChange = ({ target }) => {
@@ -28,6 +33,11 @@ const LogIn = () => {
 
   const dispatchFormSubmit = e => {
     e.preventDefault();
+    // do something, valudate.
+    login({
+      username: formData.username,
+      password: formData.password
+    }).then(user => userDispatch({ type: 'SET_USER', payload: user }));
   }
 
   return (
