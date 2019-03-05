@@ -21,12 +21,16 @@ const App = () => {
 
 // language context provider
 const [ { lang }, langDispatch ] = useReducer(langReducer, initialLangState),
+  // user context provider
   [ { user }, userDispatch ] = useReducer(userReducer, initialUserState);
 
+// run once on app load
 useEffect(() => {
+  // check for user session
+  // TODO: loading feedback
   me()
     .then(user => userDispatch({ type: 'SET_USER', payload: user}))
-}, []); 
+}, []);
 
   return (
     // wrap app in provider and router

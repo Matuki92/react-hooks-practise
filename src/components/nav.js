@@ -6,6 +6,8 @@ import { NavLink } from 'react-router-dom';
 import { Lang } from '../lang/index';
 // user
 import { User } from '../user/index';
+// auth 
+import { logout } from '../auth/authservice';
 
 const Nav = () => {
   console.log('rendering nav');
@@ -34,6 +36,15 @@ const Nav = () => {
       // show menu
       setShowMenu(true);
     }
+  }
+
+  const handleLogOut = () => {
+    logout()
+      .then(ok => {
+        if (ok) {
+          userDispatch({ type: 'LOG_OUT' });
+        }
+      });
   }
 
   // render
@@ -96,15 +107,13 @@ const Nav = () => {
               :
               <li>
                 {/* logout button */}
-                <button onClick={() => userDispatch({ type: 'LOG_OUT' })} className="nav-button" type="button">
+                <button onClick={handleLogOut} className="nav-button" type="button">
                   {lang.logout}
                 </button>
               </li>
             }
 
           </div>
-
-          
 
           <hr/>
 

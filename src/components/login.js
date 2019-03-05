@@ -33,7 +33,9 @@ const LogIn = () => {
 
   const dispatchFormSubmit = e => {
     e.preventDefault();
-    // do something, valudate.
+    // do something, validate.
+
+    // try to log in and set new data
     login({
       username: formData.username,
       password: formData.password
