@@ -1,9 +1,7 @@
 // react
 import React, { useState, useContext } from 'react';
-// lang
-import { Lang } from '../lang/index';
-// user
-import { User } from '../user/index';
+// store
+import Store from '../store/store';
 // auth
 import { login } from '../auth/authservice';
 
@@ -15,8 +13,7 @@ const LogIn = () => {
     password: ''
   });
 
-  const { lang } = useContext(Lang),
-    { userDispatch } = useContext(User);
+  const { store, dispatch } = useContext(Store);
   
   // main dispatch function for all the inputs
   const dispatchInputChange = ({ target }) => {
@@ -39,24 +36,24 @@ const LogIn = () => {
     login({
       username: formData.username,
       password: formData.password
-    }).then(user => userDispatch({ type: 'SET_USER', payload: user }));
+    }).then(user => dispatch({ type: 'SET_USER', payload: user }));
   }
 
   return (
     <form onSubmit={dispatchFormSubmit}>
-      <h2>{lang.login}</h2>
+      <h2>{store.lang.login}</h2>
 
       <div className="field">
-        <label>{lang.username}</label>
+        <label>{store.lang.username}</label>
         <input name="username" type="text" value={formData.username} onChange={dispatchInputChange}/>
       </div>
 
       <div className="field">
-        <label>{lang.password}</label>
+        <label>{store.lang.password}</label>
         <input name="password" type="password" value={formData.password} onChange={dispatchInputChange}/>
       </div>
 
-      <button type="submit">{lang.submit}</button>
+      <button type="submit">{store.lang.submit}</button>
       
     </form>
   );

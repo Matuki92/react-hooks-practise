@@ -1,7 +1,7 @@
 // react
 import React, { useState, useContext } from 'react';
-// lang
-import { Lang } from '../lang/index';
+// store
+import Store from '../store/store';
 
 const SignUp = () => {
   console.log('rendering signup');
@@ -12,7 +12,7 @@ const SignUp = () => {
     repeatedPassword: ''
   });
 
-  const { lang } = useContext(Lang);
+  const { store, dispatch } = useContext(Store);
   
   // main dispatch function for all the inputs
   const dispatchInputChange = ({ target }) => {
@@ -29,28 +29,29 @@ const SignUp = () => {
 
   const dispatchFormSubmit = e => {
     e.preventDefault();
+    // dispatch
   }
 
   return (
     <form onSubmit={dispatchFormSubmit}>
-      <h2>{lang.signup}</h2>
+      <h2>{store.lang.signup}</h2>
 
       <div className="field">
-        <label>{lang.username}</label>
+        <label>{store.lang.username}</label>
         <input name="username" type="text" value={formData.username} onChange={dispatchInputChange}/>
       </div>
 
       <div className="field">
-        <label>{lang.password}</label>
+        <label>{store.lang.password}</label>
         <input name="password" type="password" value={formData.password} onChange={dispatchInputChange}/>
       </div>
 
       <div className="field">
-        <label>{lang.repeat_password}</label>
+        <label>{store.lang.repeat_password}</label>
         <input name="repeatedPassword" type="password" value={formData.repeatedPassword} onChange={dispatchInputChange}/>
       </div>
 
-      <button type="submit">{lang.submit}</button>
+      <button type="submit">{store.lang.submit}</button>
       
     </form>
   );

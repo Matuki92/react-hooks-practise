@@ -2,10 +2,8 @@
 import React, { Fragment, useState, useContext } from 'react';
 // router
 import { NavLink } from 'react-router-dom';
-// lang
-import { Lang } from '../lang/index';
-// user
-import { User } from '../user/index';
+// store
+import Store from '../store/store';
 // auth 
 import { logout } from '../auth/authservice';
 
@@ -13,8 +11,7 @@ const Nav = () => {
   console.log('rendering nav');
 
   const [ showMenu, setShowMenu ] = useState(false),
-    { lang, langDispatch } = useContext(Lang),
-    { user, userDispatch } = useContext(User);
+    { store, dispatch } = useContext(Store);
 
   //
   // toggle menu functions
@@ -29,6 +26,7 @@ const Nav = () => {
       document.removeEventListener('click', hideMenu);
     };
   }
+
   const handleShowMenu = () => {
     if (!showMenu) {
       // add listener to hide menu on click or tap
@@ -42,7 +40,7 @@ const Nav = () => {
     logout()
       .then(ok => {
         if (ok) {
-          userDispatch({ type: 'LOG_OUT' });
+          dispatch({ type: 'USER_LOG_OUT' });
         }
       });
   }
@@ -73,7 +71,7 @@ const Nav = () => {
             <li>
               <NavLink to="/">
                 <button className="nav-button" type="button">
-                  {lang.home_button}
+                  {store.lang.home_button}
                 </button>
               </NavLink>
             </li>
@@ -81,13 +79,13 @@ const Nav = () => {
             <hr/>
 
             {/* render buttons depending on user auth status */}
-            {!user ? 
+            {!store.user ? 
               <Fragment>
                 {/* signup button */}
                 <li>
                   <NavLink to="/signup">
                     <button className="nav-button" type="button">
-                      {lang.signup}
+                      {store.lang.signup}
                     </button>
                   </NavLink>
                 </li>
@@ -98,7 +96,7 @@ const Nav = () => {
                 <li>
                   <NavLink to="/login">
                     <button className="nav-button" type="button">
-                      {lang.login}
+                      {store.lang.login}
                     </button>
                   </NavLink>
                 </li>
@@ -108,7 +106,7 @@ const Nav = () => {
               <li>
                 {/* logout button */}
                 <button onClick={handleLogOut} className="nav-button" type="button">
-                  {lang.logout}
+                  {store.lang.logout}
                 </button>
               </li>
             }
@@ -121,8 +119,8 @@ const Nav = () => {
           
             {/* lang toggle button */}
             <li>
-              <button id="lang-button" className="nav-button" type="button" onClick={() => langDispatch({ type: 'TOGGLE-LANG' })}>
-                {lang.id === 'EN' ? 'Español' : 'English'}
+              <button id="lang-button" className="nav-button" type="button" onClick={() => dispatch({ type: 'LANG_TOGGLE' })}>
+                {store.lang.id === 'EN' ? 'Español' : 'English'}
               </button>
             </li>
 
@@ -132,7 +130,7 @@ const Nav = () => {
             <li>
               <NavLink exact to="/about">
                 <button className="nav-button" type="button">
-                  {lang.about_button}
+                  {store.lang.about_button}
                 </button>
               </NavLink>
             </li>

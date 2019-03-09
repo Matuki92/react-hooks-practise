@@ -11,18 +11,16 @@ import LogIn from './components/login';
 // services
 import { me } from './auth/authservice';
 // lang
-import { Lang, langReducer, initialLangState } from './lang/index';
-// user
-import { User, userReducer, initialUserState } from './user/index';
+import { mainReducer, initialAppState } from './reducers/mainreducer';
+// store
+import Store from './store/store';
 // css
 import './styles.css';
 
 const App = () => {
 
-// language context provider
-const [ { lang }, langDispatch ] = useReducer(langReducer, initialLangState),
-  // user context provider
-  [ { user }, userDispatch ] = useReducer(userReducer, initialUserState);
+// store context provider
+const [ store, dispatch ] = useReducer(mainReducer, initialAppState);
 
 // run once on app load
 useEffect(() => {
@@ -31,39 +29,37 @@ useEffect(() => {
   me()
     .then(user => {
       if (user) {
-        userDispatch({ type: 'SET_USER', payload: user})
+        dispatch({ type: 'USER_SET', payload: user})
       }
   })
 }, []);
 
   return (
     // wrap app in provider and router
-    <Lang.Provider value={{ lang, langDispatch }}>
-      <User.Provider value={{ user, userDispatch }}>
-        <MemoryRouter>
-          <Fragment>
+    <Store.Provider value={{ store, dispatch }}>
+      <MemoryRouter>
+        <Fragment>
 
-            {/* app layout start */}
-            <Nav/>
-            {/* route outlet */}
-            <section className="container">
-              <Route exact path="/"/>
-              {!user &&
-                // protected routes
-                <Fragment>
-                  <Route path="/signup" render={() => <SignUp/>}/>
-                  <Route path="/login" render={() => <LogIn/>}/>
-                </Fragment>
-              }
-              <Route path="/about" render={() => <About/>}/>
-            </section>
+          {/* app layout start */}
+          <Nav/>
+          {/* route outlet */}
+          <section className="container">
+            <Route exact path="/"/>
+            {!store.user &&
+              // protected routes
+              <Fragment>
+                <Route path="/signup" render={() => <SignUp/>}/>
+                <Route path="/login" render={() => <LogIn/>}/>
+              </Fragment>
+            }
+            <Route path="/about" render={() => <About/>}/>
+          </section>
 
-            {/* app layout end */}
+          {/* app layout end */}
 
-          </Fragment>
-        </MemoryRouter>
-      </User.Provider>
-    </Lang.Provider>
+        </Fragment>
+      </MemoryRouter>
+    </Store.Provider>
   );
 }
 

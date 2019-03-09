@@ -1,16 +1,16 @@
 // react
 import React, { useContext } from 'react';
-// lang
-import { Lang } from '../lang/index';
+// store
+import Store from '../store/store';
 
 const About = () => {
   console.log('rendering about');
 
-  const { lang } = useContext(Lang);
+  const { store, dispatch } = useContext(Store);
 
   return (
     <div className="about">
-      <p>{lang.about}</p>
+      <p>{store.lang.about}</p>
     </div>
   );
 }
